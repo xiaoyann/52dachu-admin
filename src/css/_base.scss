@@ -1,0 +1,198 @@
+/**
+ * 基础通用样式
+ */
+
+@import "setting";
+
+
+//-----------------
+// 重置样式
+//-----------------
+
+html {
+    height: 100%;
+    font-size: 32px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+html * {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body, 
+h3, 
+h4, 
+h6, 
+p, 
+dl, 
+dd {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+input {
+    padding: 0;
+    border: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input:disabled {
+    color: #000;
+    opacity: 1
+}
+
+::-webkit-input-placeholder {
+    color: #999;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+//-----------------
+// 通用样式
+//-----------------
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.ml-small {
+    margin-left: pxToRem(20);
+}
+
+.pb-small {
+    padding-bottom: pxToRem(20);
+}
+
+.clearfix {
+    &:before,
+    &:after {
+        content: ""; 
+        display: table;
+        font: 0/0 a
+    }
+    &:after {
+        clear: both
+    }
+}
+
+.active:active {
+    background-color: #e4e4e4;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-item {
+    flex: 1
+}
+
+@media (min-width:375px) {
+    html {
+        font-size: 37.5px;
+    }    
+}
+
+@media (min-width:414px) {
+    html {
+        font-size: 41.4px;
+    }
+}
+
+body {
+    font-size: 14px;
+    background-color: #F5F5F5;
+}
+
+#app {
+    max-width: 800px;
+    min-width: 320px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+
+.icon-next {
+    display: block;
+    width: pxToRem(50);
+    background-size: pxToRem(40);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../img/next.svg);
+}  
+
+.button {
+    display: block;
+    height: pxToRem(60);
+    border-radius: 3px;
+    text-align: center;
+    line-height: pxToRem(60);
+    font-size: 14px;
+    color: #FFF;
+    background-color: #3385ff;
+    -webkit-user-select: none; 
+
+    &:active {
+        background-color: darken(#3385ff, 10);
+    }
+}
+
+.button__disabled {
+    background-color: #CCC;
+}
+
+.button-caution {
+    background-color: #ff7680;
+
+    &:active {
+        background-color: darken(#ff7680, 10);
+    }
+}
+
+// ---------------
+// TabBar icon
+// ---------------
+
+.tabbar-item-icon-0__normal {
+    background-image: url(../img/menu.svg);
+}
+
+.tabbar-item-icon-0__active {
+    background-image: url(../img/menu-2.svg);
+}
+
+
+.cell-title {
+    padding: pxToRem(10) pxToRem(30);
+    font-size: pxToRem(24);
+    line-height: 1;
+    color: #585858;
+}
+
+.cell {
+    display: flex;
+    position: relative;
+    padding: pxToRem(20) pxToRem(30);
+    background-color: #FFF;
+    
+    &:after {
+        @include border-bottom;
+    }
+}
+
+.cell-bd {
+    flex: 1
+}

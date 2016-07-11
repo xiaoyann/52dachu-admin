@@ -1,0 +1,97 @@
+/**
+ * 基础配置
+ */
+
+
+// 像素转rem
+@function pxToRem($px) {
+    @return $px / 2 / 32 * 1rem;
+}
+
+
+$baseBorderColor:           #D9D9D9         !default;
+
+
+//----------------
+// 1px border top
+//----------------
+@mixin border-top {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid $baseBorderColor;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+
+
+//----------------
+// 1px border bottom
+//----------------
+@mixin border-bottom {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid $baseBorderColor;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+
+
+//----------------
+// 1px border right
+//----------------
+@mixin border-right {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 1px;
+    height: 100%;
+    border-right: 1px solid $baseBorderColor;
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+}
+
+
+//----------------
+// 1px border left
+//----------------
+@mixin border-left {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 1px;
+    height: 100%;
+    border-left: 1px solid $baseBorderColor;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+}
+
+
+
+
+
+
+
