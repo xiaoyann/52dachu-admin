@@ -1,11 +1,3 @@
-//******************************************
-// 热替换要点
-// 1. config.entry.app.unshift('webpack-dev-server/client?http://172.16.156.87:8080');
-// 2. config.output.publicPath = 'http://172.16.156.87:8080/';
-// 3. config.devServer.hot = true;
-// 4. config.devServer.publicPath = '/';
-//******************************************
-
 // webpack-dev-server --config build/webpack.dev.js 
 //      --hot           使用热替换
 //      --deploy        发布到测试机，只发布 HTML 模板文件，css, js 等资源使用本地服务的，
@@ -16,16 +8,14 @@ var path            =   require('path');
 var utils           =   require('./utils');
 var webpack         =   require('webpack');
 var DeployPlugin    =   require('./deployPlugin');
-var config          =   require('./webpack.config.js');
+var config          =   require('./webpack.config');
+var WebpackDevServer = require('webpack-dev-server');
 
 var port = 8080;
 var host = utils.getIP();
-var url  = 'http://' + host + ':' + port;
 
 // 本地环境静态资源 domain
-var localPublicPath = url + '/';
-// 测试环境静态资源 domain
-var testPublicPath = 'http://52dachu.com/';
+var localPublicPath = 'http://' + host + ':' + port + '/';
 //  测试机资源存放路径
 var REMOTE_PUBLIC_PATH = require('./config.json').path;
 
@@ -36,13 +26,13 @@ var deploy = args.indexOf('--deploy') > -1;
 // 静态资源加上 domain
 config.output.publicPath = localPublicPath; 
 
+config.entry.app.unshift('webpack-dev-server/client?' + localPublicPath);
+
 // 开启热替换相关设置
 if (hot === true) {
-    config.entry.app.unshift('webpack-dev-server/client?' + url); // 这里的 url 一定不要以 / 结尾
     config.entry.app.unshift('webpack/hot/only-dev-server');
     config.module.loaders[0].loaders.unshift('react-hot');
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
-    config.devServer.hot = true;
 }
 
 // 是否发布到测试环境
@@ -53,5 +43,20 @@ if (deploy === true) {
     }]));
 }
 
-module.exports = config;
+new WebpackDevServer(webpack(config), {
+    hot: hot,
+    inline: true,
+    historyApiFallback: true,
+    publicPath: '/',
+    compress: true,
+    stats: {
+      chunks: false,
+      children: false,
+      colors: true
+    }
+}).listen(port, host, function() {
+  console.log(localPublicPath);
+});
+
+
 

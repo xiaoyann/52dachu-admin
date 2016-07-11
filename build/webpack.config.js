@@ -1,6 +1,3 @@
-// 1. 图片压缩： image-webpack-loader
-// 2. 切分 CSS：
-
 var path = require('path');
 var exec = require('child_process').exec;
 var utils = require('./utils');
@@ -9,7 +6,6 @@ var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// short-name of util
 var fullPath  = utils.fullPath;
 var pickFiles = utils.pickFiles;
 
@@ -24,12 +20,6 @@ var NODE_MODULES_PATH =  ROOT_PATH + '/node_modules';
 var __DEV__ = !(process.env.NODE_ENV === 'production');
 var HOST = utils.getIP();
 
-// 干掉旧的 dist
-// exec('rm -rf ' + DIST_PATH, function(err, out) {});
-
-//*********************************************
-// alias 配置
-//*********************************************
 
 // base
 var alias = pickFiles({
@@ -62,6 +52,56 @@ alias = Object.assign(alias, pickFiles({
 }));
 
 
+var loaders = [
+	{
+		test: /\.js$/,
+		exclude: /node_modules/,
+		include: SRC_PATH,
+ 			loaders: ['babel?cacheDirectory='+CACHE_PATH]
+	},
+	{
+		test: /\.tpl$/,
+		loader: 'html',
+	},
+	{
+		test: /\.(?:jpg|gif|png|svg)$/,
+		loaders: [
+			'url?limit=8000&name=img/[hash].[ext]', 
+			'image-webpack'
+		]
+	}
+];
+
+if (__DEV__) {
+	loaders.push({
+		test: /\.(scss|css)$/,
+		loaders: ['style-loader', 'css-loader', 'sass-loader'] 
+	});
+} else {
+	loaders.push({
+		test: /\.(scss|css)$/,
+		loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+	});
+}
+
+
+var plugins = [
+	new webpack.DefinePlugin({
+		__DEV__: __DEV__
+	}),
+	new HtmlwebpackPlugin({
+		filename: 'index.html',
+		chunks: ['app', 'lib'],
+		template: SRC_PATH + '/pages/app.html',
+	}),
+	new webpack.optimize.CommonsChunkPlugin('lib', DIST_JS + '/lib.[hash].js')
+];
+
+if (__DEV__) {
+	plugins.push(new ExtractTextPlugin(DIST_CSS + '/[name].[hash].css'));
+}
+
+
 module.exports = {
 	context: SRC_PATH,
 	entry: {
@@ -82,58 +122,12 @@ module.exports = {
 		filename: DIST_JS + '/[name].[hash].js'
 	},
 	module: {
-		loaders: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				include: SRC_PATH,
-	   			loaders: ['babel?cacheDirectory='+CACHE_PATH]
-			},
-			{
-				test: /\.(scss|css)$/,
-				loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
-			},
-			{
-				test: /\.tpl$/,
-				loader: 'html',
-			},
-			{
-				test: /\.(?:jpg|gif|png|svg)$/,
-				loaders: [
-					'url?limit=8000&name=img/[hash].[ext]', 
-					'image-webpack'
-				]
-			}
-		],
+		loaders: loaders,
 	},
 	resolve: {
 		alias: alias
 	},
-	plugins: [
-		new webpack.DefinePlugin({
-			__DEV__: __DEV__
-		}),
-		new HtmlwebpackPlugin({
-			filename: 'index.html',
-			chunks: ['app', 'lib'],
-			template: SRC_PATH + '/pages/app.html',
-		}),
-		new webpack.optimize.CommonsChunkPlugin('lib', DIST_JS + '/lib.[hash].js'),
-		new ExtractTextPlugin(DIST_CSS + '/[name].[hash].css')
-	],
-	devServer: {
-		host: HOST,
-		hot: false,
-		inline: true,
-		historyApiFallback: true,
-		stats: {
-			chunks: false,
-        	children: false,
-        	color: true
-		},
-		publicPath: '/',
-		compress: true,
-	}
+	plugins: plugins
 };
 
 

@@ -4,7 +4,7 @@
   "description": "52dachu 后台管理系统前端资源 https://52dachu.com",
   "scripts": {
     "api": "node ./build/api.js",
-    "dev:local": "npm run api local && NODE_ENV=dev webpack-dev-server --config build/webpack.dev.js --hot",
+    "dev:local": "npm run api local && NODE_ENV=dev node build/webpack.dev.js --hot",
     "dev:both": "npm run api && NODE_ENV=dev webpack-dev-server --config build/webpack.dev.js --hot --deploy",
     "start": "npm run dev:local",
     "deploy:test": "npm run api test && webpack --config build/webpack.release.js --watch --deploy=test",
@@ -36,14 +36,14 @@
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
     "mocha": "^2.5.3",
-    "node-sass": "^3.7.0",
+    "node-sass": "^3.8.0",
     "react-addons-test-utils": "^15.1.0",
     "react-hot-loader": "^1.3.0",
     "react-tools": "^0.13.3",
-    "sass-loader": "^3.2.0",
+    "sass-loader": "^3.2.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.14",
+    "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
