@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app',
+  selector: 'root',
   template: `
-    <main>
-      <h1>Hello from Angular 2 App with Webpack</h1>
-    </main>
-  `
+    <header></header>
+    <div class="content">
+      <sidebar></sidebar>
+      <div class="main">
+        <breadcrumb></breadcrumb>
+        <router-outlet></router-outlet>
+      </div>  
+    </div>
+  `,
+  styleUrls: [ 'app.component.scss' ]
 })
 export class AppComponent { }

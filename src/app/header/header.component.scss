@@ -1,0 +1,17 @@
+@import '../../css/_setting.scss';
+
+.header {
+  height: 28px;
+  padding: 6px 0;
+  background: #30759c;
+}
+
+.logo {
+  width: $sidebarWith;
+  height: 28px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+}
+

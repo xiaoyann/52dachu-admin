@@ -1,0 +1,25 @@
+.wrapper {
+  padding-bottom: 10px;
+  background-color: #faf4e8;
+}
+
+.main {
+  height: 14px;
+  padding: 10px 0 10px 15px;
+  font-size: 14px;
+  line-height: 14px;
+  background-color: #fff;
+
+  i {
+    padding: 0 5px;
+    color: #ccc;
+  }
+
+  span {
+    color: #337ab7
+  }
+
+  .disable {
+    color: #999;
+  }
+}

@@ -1,0 +1,38 @@
+@import '../../css/_setting.scss';
+
+.sidebar {
+  width: $sidebarWith;
+  height: 100%;
+  padding-top: 10px;
+  border-right: 1px solid #ccc;
+  background-color: #faf4e8;
+}
+
+.nav {
+  display: flex;
+  height: 34px;
+  padding: 5px 0 5px 20px;
+  cursor: pointer;
+
+  i {
+    width: 34px;
+    height: 34px;
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: center center;
+  }
+
+  span {
+    flex: 1;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+    color: #784942;
+  }
+}
+
+.active {
+  background-color: #e4d6b8;
+}
+
+

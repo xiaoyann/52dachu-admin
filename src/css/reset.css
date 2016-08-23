@@ -1,17 +1,13 @@
-//-----------------
-// 重置样式
-//-----------------
-
 html * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-body, 
-h2, 
-h3, 
-p, 
-dl, 
-dd {
+html, body {
+  height: 100%;
+}
+
+body, h2, h3, 
+p, dl, dd {
   margin: 0;
 }
 
@@ -20,8 +16,7 @@ body {
   line-height: 1.5;
 }
 
-body, 
-input {
+body, input {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -35,8 +30,30 @@ ul {
   color: #999;
 }
 
+.icon-home {
+  background-image: url(../img/icon-house.svg);
+}
 
+.icon-article {
+  background-image: url(../img/icon-book.svg);
+}
 
+.icon-cate {
+  background-image: url(../img/icon-class.svg);
+}
+
+.icon-system {
+  background-image: url(../img/icon-setting.svg);
+}
+
+.icon-tag {
+  background-image: url(../img/icon-study.svg);
+}
+
+a {
+  text-decoration: none;
+  color: #337ab7;
+}
 
 
 
