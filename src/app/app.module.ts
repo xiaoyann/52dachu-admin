@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import { HttpModule, XHRBackend } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -10,19 +11,20 @@ import { CateComponent } from './cate/cate.component';
 import { TagComponent } from './tag/tag.component';
 import { SystemComponent } from './system/system.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { PagingComponent } from './paging/paging.component';
 
 import { routing } from './app.routing';
 
 @NgModule({
   imports: [
-    BrowserModule, routing
+    BrowserModule, routing, HttpModule
   ],
   declarations: [
     AppComponent, HeaderComponent, 
     SidebarComponent, DashboardComponent,
     ArticleComponent, CateComponent,
     TagComponent, SystemComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent, PagingComponent
   ],
   bootstrap: [ AppComponent ]
 })

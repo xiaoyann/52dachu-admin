@@ -1,0 +1,29 @@
+.wrapper {
+  padding: 30px 8px;
+}
+
+.page {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  &:hover {
+    color: #fff;
+    background-color: #337ab7;
+  }
+}
+
+.disable {
+  opacity: 0.5;
+  cursor: not-allowed;
+
+  &:hover {
+    color: #666;
+    background-color: #fff;
+  }  
+}

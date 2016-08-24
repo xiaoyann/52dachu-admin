@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import './rxjs-operators';
+import '../css/reset.css';
 
 @Component({
   selector: 'root',

@@ -1,38 +1,27 @@
 <div class="wrapper">
+  
   <table>
     <thead>
       <tr>
         <th width="45%">标题</th>
         <th width="15%">状态</th>
-        <th width="20%">日期</th>
+        <th width="20%">创建日期</th>
         <th width="20%">操作</th>
       </tr>  
     </thead>
     <tbody>
-      <tr>
-        <td><a href="">ECS 服务器环境搭建</a></td>
-        <td>已发布</td>
-        <td>2016年06月26日 16:13</td>
-        <td>编辑 删除</td>
-      </tr>
-      <tr>
-        <td><a href="">ECS 服务器环境搭建</a></td>
-        <td>已发布</td>
-        <td>2016年06月26日 16:13</td>
-        <td>编辑 删除</td>
-      </tr>
-      <tr>
-        <td><a href="">ECS 服务器环境搭建</a></td>
-        <td>已发布</td>
-        <td>2016年06月26日 16:13</td>
-        <td>编辑 删除</td>
-      </tr>
-      <tr>
-        <td><a href="">ECS 服务器环境搭建</a></td>
-        <td>已发布</td>
-        <td>2016年06月26日 16:13</td>
-        <td>编辑 删除</td>
+      <tr *ngFor="let article of articles">
+        <td><a href="">{{article.title}}</a></td>
+        <td>{{article.status}}</td>
+        <td>{{article.create_time}}</td>
+        <td>
+          <button class="button btn-edit">编辑</button>
+          <button class="button btn-del">删除</button>
+        </td>
       </tr>
     </tbody>
   </table>
+
+  <paging></paging>
+  
 </div>

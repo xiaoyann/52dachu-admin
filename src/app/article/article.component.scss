@@ -1,5 +1,5 @@
 .wrapper {
-  padding-left: 15px;
+  padding: 0 15px;
 }
 
 table {
@@ -24,4 +24,32 @@ td {
 
 tbody tr:nth-child(odd) {
   background-color: #F5F8FA
+}
+
+/**
+ * button 
+ */
+.button {
+  margin-right: 5px;
+  padding: 5px 5px 5px 18px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 4px center;
+}
+
+.btn-del {
+  background-color: #c9302c;
+  background-image: url(../../img/icon-delete.svg);
+}
+
+.btn-edit {
+  background-color: #337ab7;
+  background-image: url(../../img/icon-edit.svg);
 }
