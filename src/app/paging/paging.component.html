@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <a (click)="firstPage()" [class.disable]="currentPage === 1" class="page-operation">首页</a>
+  <a (click)="previousPage()" [class.disable]="currentPage === 1" class="page-operation">上一页</a>
+  
+  <a 
+    *ngFor="let page of pages" 
+    (click)="changePage(page)"
+    [class.active]="page === currentPage"
+    class="page-number"
+  >
+    {{page}}
+  </a>
+  
+  <span class="text">...</span>
+  
+  <a (click)="nextPage()" [class.disable]="currentPage === totalPages" class="page-operation">下一页</a>
+  <a (click)="lastPage()" [class.disable]="currentPage === totalPages" class="page-operation">尾页</a>
+  
+  <span class="text">共 {{totalPages}} 页</span>
+  
+  <span class="text">当前</span>
+  <input #p value="{{currentPage}}" />
+  <span class="text">页</span>
+
+  <button (click)="changePage(p.value * 1)">确定</button>
+</div>

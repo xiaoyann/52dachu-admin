@@ -11,15 +11,22 @@ import { ArticleService } from '../../service/article.service';
 export class ArticleComponent implements OnInit {
 
   articles: Array<Object>;
+  totalPages: number = 0;
 
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    this.getArticles();
+    this.getArticles(1);
   }
 
-  getArticles() {
-    this.articleService.getArticles().subscribe(
-      res => this.articles = res.articles);
+  getArticles(page: number) {
+    this.articleService.getArticles(page).subscribe(res => {
+      this.articles = res.articles;
+      this.totalPages = res.totalPages;
+    });
+  }
+
+  handleChangePage(page: number) {
+    this.getArticles(page);
   }
 }

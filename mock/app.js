@@ -39,17 +39,19 @@ app.get('/admin/article', function(req, res) {
   var endIndex  = startIndex + 6;
   var list = articles.slice(startIndex, endIndex);
 
-  res.send({
-    errno: 0,
-    errmsg:  '',
-    data: {
-      count: count,
-      pageSize: pageSize,
-      totalPages: totalPages,
-      currentPage: currentPage,
-      articles: list,
-    }
-  });
+  setTimeout(function() {
+    res.send({
+      errno: 0,
+      errmsg:  '',
+      data: {
+        count: count,
+        pageSize: pageSize,
+        totalPages: totalPages,
+        currentPage: currentPage,
+        articles: list,
+      }
+    });
+  }, 1);
 });
 
 // app.all('/', function(req, res) {

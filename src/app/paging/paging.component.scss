@@ -1,11 +1,16 @@
 .wrapper {
   padding: 30px 8px;
+  font-size: 0;
 }
 
-.page {
+.page-operation,
+.page-number {
+  display: inline-block;
+  margin-right: 10px;
   padding: 6px 10px;
   border: 1px solid #ddd;
   font-size: 12px;
+  text-align: center;
   color: #666;
   cursor: pointer;
   -webkit-user-select: none;
@@ -13,9 +18,20 @@
   -ms-user-select: none;
 
   &:hover {
+    color: #337ab7;
+    border-color: #337ab7;
+  }
+
+  &.active {
     color: #fff;
+    border-color: #337ab7;
     background-color: #337ab7;
   }
+}
+
+.page-number {
+  width: 36px;
+  padding: 6px 0;
 }
 
 .disable {
@@ -24,6 +40,20 @@
 
   &:hover {
     color: #666;
+    border-color: #ddd;
     background-color: #fff;
   }  
 }
+
+.text {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+input {
+  width: 40px;
+  margin-right: 10px;
+}
+
+
+

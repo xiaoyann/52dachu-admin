@@ -22,6 +22,6 @@
     </tbody>
   </table>
 
-  <paging></paging>
+  <paging [totalPages]="totalPages" (onChangePage)="handleChangePage($event)"></paging>
   
 </div>
