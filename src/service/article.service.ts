@@ -5,7 +5,7 @@ import { ARTICLE } from '../base/api';
 
 interface ResponseData {
   // 数据总条数
-  count: number;
+  totals: number;
   // 每页数据条数
   pageSize: number;
   // 共有多少页
@@ -13,7 +13,7 @@ interface ResponseData {
   // 当前页码
   currentPage: number;
   // 数据列表
-  articles: Array<Object>;
+  rows: Array<Object>;
 }
 
 @Injectable()

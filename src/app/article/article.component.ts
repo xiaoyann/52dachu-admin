@@ -21,7 +21,7 @@ export class ArticleComponent implements OnInit {
 
   getArticles(page: number) {
     this.articleService.getArticles(page).subscribe(res => {
-      this.articles = res.articles;
+      this.articles = res.rows;
       this.totalPages = res.totalPages;
     });
   }
