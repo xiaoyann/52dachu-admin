@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArticleComponent } from './article/article.component';
+import { CreateArticleComponent } from './article/create-article.component';
 import { CateComponent } from './cate/cate.component';
 import { TagComponent } from './tag/tag.component';
 import { SystemComponent } from './system/system.component';
@@ -22,8 +23,8 @@ import { routing } from './app.routing';
   declarations: [
     AppComponent, HeaderComponent, 
     SidebarComponent, DashboardComponent,
-    ArticleComponent, CateComponent,
-    TagComponent, SystemComponent,
+    ArticleComponent, CreateArticleComponent, 
+    CateComponent, TagComponent, SystemComponent,
     BreadcrumbComponent, PagingComponent
   ],
   bootstrap: [ AppComponent ]

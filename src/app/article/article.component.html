@@ -1,27 +1,26 @@
-<div class="wrapper">
-  
-  <table>
-    <thead>
-      <tr>
-        <th width="45%">标题</th>
-        <th width="15%">状态</th>
-        <th width="20%">创建日期</th>
-        <th width="20%">操作</th>
-      </tr>  
-    </thead>
-    <tbody>
-      <tr *ngFor="let article of articles">
-        <td><a href="">{{article.title}}</a></td>
-        <td>{{article.status}}</td>
-        <td>{{article.create_time}}</td>
-        <td>
-          <button class="button btn-edit">编辑</button>
-          <button class="button btn-del">删除</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<button routerLink="/article/create">添加</button>
 
-  <paging [totalPages]="totalPages" (onChangePage)="handleChangePage($event)"></paging>
+<table>
+  <thead>
+    <tr>
+      <th width="45%">标题</th>
+      <th width="15%">状态</th>
+      <th width="20%">创建日期</th>
+      <th width="20%">操作</th>
+    </tr>  
+  </thead>
+  <tbody>
+    <tr *ngFor="let article of articles">
+      <td><a>{{article.title}}</a></td>
+      <td>{{article.status}}</td>
+      <td>{{article.create_time}}</td>
+      <td>
+        <button class="button btn-edit">编辑</button>
+        <button class="button btn-del">删除</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<paging [totalPages]="totalPages" (onChangePage)="handleChangePage($event)"></paging>
   
-</div>

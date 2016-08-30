@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArticleComponent } from './article/article.component';
+import { CreateArticleComponent } from './article/create-article.component';
 import { CateComponent } from './cate/cate.component';
 import { TagComponent } from './tag/tag.component';
 import { SystemComponent } from './system/system.component';
@@ -13,6 +14,10 @@ const appRoutes: Routes = [
   {
     path: 'article',
     component: ArticleComponent
+  },
+  {
+    path: 'article/create',
+    component: CreateArticleComponent
   },
   {
     path: 'cate',

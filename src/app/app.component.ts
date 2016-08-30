@@ -10,7 +10,9 @@ import '../css/reset.css';
       <sidebar></sidebar>
       <div class="main">
         <breadcrumb></breadcrumb>
-        <router-outlet></router-outlet>
+        <div class="main-bd">
+          <router-outlet></router-outlet>
+        </div>
       </div>  
     </div>
   `,
